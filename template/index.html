@@ -119,13 +119,13 @@
     <div class="clearfix"></div>
 
     {{#if article.description}}
-      <p>{{{nl2br article.description}}}</p>
+      <p class="method-description"><strong>{{{nl2br article.description}}}</strong></p>
     {{/if}}
 
     <pre class="prettyprint language-html" data-type="{{toLowerCase article.type}}"><code>{{article.url}}</code></pre>
-
+    <div class="clearfix"></div>
     {{#if article.permission}}
-      <p>
+      <p class="clear">
         {{__ "Permission:"}}
         {{#each article.permission}}
           {{name}}
@@ -138,7 +138,7 @@
     {{/if}}
 
     {{#if_gt article.examples.length compare=0}}
-      <ul class="nav nav-tabs nav-tabs-examples">
+      <ul class="nav nav-tabs nav-tabs-examples clear">
         {{#each article.examples}}
           <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
             <a href="#examples-{{../id}}-{{@index}}">{{title}}</a>
@@ -146,7 +146,7 @@
         {{/each}}
       </ul>
 
-      <div class="tab-content">
+      <div class="tab-content clear">
       {{#each article.examples}}
         <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="examples-{{../id}}-{{@index}}">
           <pre class="prettyprint language-{{type}}" data-type="{{type}}"><code>{{content}}</code></pre>
@@ -327,10 +327,10 @@
     <div class="clearfix"></div>
 
     {{#if article.description}}
-      <p>{{{showDiff article.description compare.description "nl2br"}}}</p>
+      <p class="method-description">{{{showDiff article.description compare.description "nl2br"}}}</p>
     {{else}}
       {{#if compare.description}}
-      <p>{{{showDiff "" compare.description "nl2br"}}}</p>
+      <p class="method-description">{{{showDiff "" compare.description "nl2br"}}}</p>
       {{/if}}
     {{/if}}
 
